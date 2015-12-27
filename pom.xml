@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.gpein</groupId>
+    <artifactId>jcache-jee7-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+    <name>JCache JEE7 Demo:: ${project.artifactId} - ${project.packaging}</name>
+    <description>JCache JEE7 demo web app</description>
+    <inceptionYear>2015</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>gpein</id>
+            <name>Guillaume Pein</name>
+            <email>guillaume.pein@gmail.com</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Java Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>1.8</java.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <lib.cdi-api.version>1.1</lib.cdi-api.version>
+        <lib.jaxrs-api.version>2.0.1</lib.jaxrs-api.version>
+
+        <plugin.maven-compiler-plugin.version>3.3</plugin.maven-compiler-plugin.version>
+        <plugin.maven-war-plugin.version>2.6</plugin.maven-war-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${plugin.maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- provided -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${lib.cdi-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${lib.jaxrs-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- compile -->
+        <dependency>
+            <groupId>io.github.gpein</groupId>
+            <artifactId>jcache-jee7</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
