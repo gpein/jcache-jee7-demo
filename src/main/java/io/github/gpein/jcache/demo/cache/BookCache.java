@@ -18,11 +18,15 @@ package io.github.gpein.jcache.demo.cache;
 import io.github.gpein.jcache.configuration.CacheConfiguration;
 
 import javax.cache.CacheManager;
+import javax.cache.configuration.MutableConfiguration;
+import javax.cache.expiry.Duration;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;
+
+import static javax.cache.expiry.AccessedExpiryPolicy.factoryOf;
 
 public class BookCache {
 
@@ -32,6 +36,6 @@ public class BookCache {
     private CacheManager cacheManager;
 
     void setUp(@Observes @Initialized(ApplicationScoped.class) Object event) {
-        cacheManager.createCache(CACHE_NAME, CacheConfiguration.newMutable(TimeUnit.MINUTES, 1));
+        cacheManager.createCache(CACHE_NAME, new MutableConfiguration().setExpiryPolicyFactory(factoryOf(new Duration(TimeUnit.MINUTES, 1))).setStatisticsEnabled(true));
     }
 }

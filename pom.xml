@@ -4,7 +4,7 @@
 
     <groupId>io.github.gpein</groupId>
     <artifactId>jcache-jee7-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <packaging>war</packaging>
     <name>JCache JEE7 Demo:: ${project.artifactId} - ${project.packaging}</name>
